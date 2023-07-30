@@ -1,0 +1,38 @@
+{
+  "auth": {
+    "amplifypushup774e9e1f774e9e1f": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_amplifypushup774e9e1f774e9e1f_appleAppId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifypushup774e9e1f774e9e1f"
+        }
+      ]
+    }
+  }
+}

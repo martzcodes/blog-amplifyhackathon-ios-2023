@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct AmplifyPushUpApp: App {
+    
+    let backend = Backend.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(ViewModel())
         }
     }
 }

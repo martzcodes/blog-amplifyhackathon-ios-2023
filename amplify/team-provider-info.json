@@ -1,0 +1,22 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifypushup-dev-121429-authRole",
+      "UnauthRoleArn": "arn:aws:iam::359317520455:role/amplify-amplifypushup-dev-121429-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::359317520455:role/amplify-amplifypushup-dev-121429-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplifypushup-dev-121429-deployment",
+      "UnauthRoleName": "amplify-amplifypushup-dev-121429-unauthRole",
+      "StackName": "amplify-amplifypushup-dev-121429",
+      "StackId": "arn:aws:cloudformation:us-east-1:359317520455:stack/amplify-amplifypushup-dev-121429/2a597df0-2ef4-11ee-b73b-122e2ecc5a63",
+      "AmplifyAppId": "dv4bzdjxuhf79"
+    },
+    "categories": {
+      "auth": {
+        "amplifypushup774e9e1f774e9e1f": {
+          "appleAppId": "io.dfinitiv.martzcodes.AmplifyPushUp"
+        }
+      }
+    }
+  }
+}
