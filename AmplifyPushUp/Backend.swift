@@ -4,6 +4,7 @@ import AWSCognitoAuthPlugin
 import AWSAPIPlugin
 import AWSPluginsCore
 import AWSS3StoragePlugin
+import AWSPinpointAnalyticsPlugin
 
 class Backend {
     enum AuthStatus {
@@ -33,6 +34,7 @@ class Backend {
           try Amplify.add(plugin: AWSCognitoAuthPlugin())
           try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
           try Amplify.add(plugin: AWSS3StoragePlugin())
+          try Amplify.add(plugin: AWSPinpointAnalyticsPlugin())
           try Amplify.configure()
           print("Initialized Amplify");
       } catch {
@@ -203,6 +205,19 @@ class Backend {
             do {
                 // use note.data to access the NoteData instance
                 let result = try await Amplify.API.mutate(request: .create(note.data))
+                let properties: AnalyticsProperties = [
+                    "eventPropertyStringKey": "eventPropertyStringValue",
+                    "eventPropertyIntKey": 123,
+                    "eventPropertyDoubleKey": 12.34,
+                    "eventPropertyBoolKey": true
+                ]
+
+                let event = BasicAnalyticsEvent(
+                    name: "createNote",
+                    properties: properties
+                )
+
+                try Amplify.Analytics.record(event: event)
                 switch result {
                     case .success(let data):
                         print("Successfully created note: \(data)")
