@@ -2,8 +2,8 @@ import SwiftUI
 // the data class to represents Notes
 class Note : Identifiable, ObservableObject {
     var id : String
-var name : String
-var description : String?
+    var name : String
+    var description : String?
     var imageName : String?
     @Published var image : Image?
 
@@ -16,7 +16,17 @@ var description : String?
     
     convenience init(from data: NoteData) {
         self.init(id: data.id, name: data.name, description: data.description, image: data.image)
-     
+
+        if let name = self.imageName {
+            // asynchronously download the image
+            Backend.shared.retrieveImage(name: name) { (data) in
+               // update the UI on the main thread
+                Task {
+                    let uim = UIImage(data: data)
+                    self.image = Image(uiImage: uim!)
+                }
+            }
+        }
         // store API object for easy retrieval later
         self._data = data
     }

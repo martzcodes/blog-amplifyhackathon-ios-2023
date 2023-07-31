@@ -19,6 +19,9 @@
       },
       "api": {
         "amplifypushup": {}
+      },
+      "storage": {
+        "image": {}
       }
     }
   }

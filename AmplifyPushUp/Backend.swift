@@ -3,6 +3,7 @@ import Amplify
 import AWSCognitoAuthPlugin
 import AWSAPIPlugin
 import AWSPluginsCore
+import AWSS3StoragePlugin
 
 class Backend {
     enum AuthStatus {
@@ -22,12 +23,7 @@ class Backend {
             let userData : UserData = .shared
             userData.isSignedIn = status
 
-            // when user is signed in, query the database, otherwise empty our model
-            if status {
-                self.queryNotes()
-            } else {
-                userData.notes = []
-            }
+            self.queryNotes()
         }
     }
     
@@ -36,6 +32,7 @@ class Backend {
       do {
           try Amplify.add(plugin: AWSCognitoAuthPlugin())
           try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
+          try Amplify.add(plugin: AWSS3StoragePlugin())
           try Amplify.configure()
           print("Initialized Amplify");
       } catch {
@@ -187,11 +184,9 @@ class Backend {
                     print("Successfully retrieved list of Notes")
 
                     // convert an array of NoteData to an array of Note class instances
-                    for n in notesData {
-                        let note = Note.init(from: n)
-                        await MainActor.run {
-                            UserData.shared.notes.append(note)
-                        }
+                    let notes: [Note] = notesData.map { Note(from: $0) }
+                    await MainActor.run {
+                        UserData.shared.notes = notes
                     }
 
                 case .failure(let error):
@@ -234,6 +229,60 @@ class Backend {
                 }
             } catch {
                 print("Got failed result with error \(error)")
+            }
+        }
+    }
+    
+    // MARK: - Image Storage
+    func storeImage(name: String, image: Data) {
+
+        let options = StorageUploadDataRequest.Options(accessLevel: .private)
+        let uploadTask = Amplify.Storage.uploadData(
+            key: name,
+            data: image,
+            options: options
+        )
+        Task {
+            for await progress in await uploadTask.progress {
+                // optionally update a progress bar here
+            }
+            do {
+                let data = try await uploadTask.value
+                print("Image upload completed: \(data)")
+            } catch {
+                print("Image upload failed: \(error).")
+            }
+        }
+    }
+    func retrieveImage(name: String, completed: @escaping (Data) -> Void) {
+
+        let options = StorageDownloadDataRequest.Options(accessLevel: .private)
+        let downloadTask = Amplify.Storage.downloadData(
+            key: name,
+            options: options
+        )
+        Task {
+            for await progress in await downloadTask.progress {
+                // optionally update a progress bar here
+            }
+            do {
+                let data = try await downloadTask.value
+                print("Image \(name) loaded")
+                completed(data)
+            } catch {
+                print("Can not download image: \(error).")
+            }
+        }
+    }
+    func deleteImage(name: String) {
+
+        let options = StorageRemoveRequest.Options(accessLevel: .private)
+        Task {
+            do {
+                let key = try await Amplify.Storage.remove(key: name, options: options)
+                print("Image \(key) deleted")
+            } catch {
+                print("Can not delete image: \(error).")
             }
         }
     }
