@@ -1,0 +1,49 @@
+# this is an auto generated file. This will be overwritten
+
+subscription OnCreateNoteData(
+  $filter: ModelSubscriptionNoteDataFilterInput
+  $owner: String
+) {
+  onCreateNoteData(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    image
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+
+subscription OnUpdateNoteData(
+  $filter: ModelSubscriptionNoteDataFilterInput
+  $owner: String
+) {
+  onUpdateNoteData(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    image
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+
+subscription OnDeleteNoteData(
+  $filter: ModelSubscriptionNoteDataFilterInput
+  $owner: String
+) {
+  onDeleteNoteData(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    image
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}

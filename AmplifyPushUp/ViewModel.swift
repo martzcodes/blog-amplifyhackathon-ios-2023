@@ -11,7 +11,7 @@ import SwiftUI
 enum AppState {
     case signedOut
     case loading
-    case signedIn
+    case dataAvailable([Note])
     case error(Error)
 }
 
@@ -20,6 +20,8 @@ enum AppState {
 class ViewModel : ObservableObject {
     
     @Published var state : AppState = .signedOut
+    
+    var notes : [Note] = []
     
     // MARK: Authentication
     public func getInitialAuthStatus() async throws {
@@ -37,8 +39,7 @@ class ViewModel : ObservableObject {
             for try await status in await Backend.shared.listenAuthUpdate() {
                 print("AUTH STATUS LOOP yielded \(status)")
                 switch status {
-                case .signedIn:
-                    self.state = .loading
+                case .signedIn: self.state = .loading
                 case .signedOut, .sessionExpired:
                     self.state = .signedOut
                 }
@@ -48,7 +49,7 @@ class ViewModel : ObservableObject {
     
     public func signIn() {
         Task {
-            self.state = .signedIn
+            self.state = .loading
         }
     }
     
@@ -70,7 +71,7 @@ extension ViewModel {
         let model = ViewModel()
         
         if isSignedIn {
-            //
+            model.state = .dataAvailable(model.notes)
         } else {
             model.state = .signedOut
         }

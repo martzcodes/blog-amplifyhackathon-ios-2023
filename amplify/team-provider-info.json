@@ -16,6 +16,9 @@
         "amplifypushup774e9e1f774e9e1f": {
           "appleAppId": "io.dfinitiv.martzcodes.AmplifyPushUp"
         }
+      },
+      "api": {
+        "amplifypushup": {}
       }
     }
   }
