@@ -922,7 +922,7 @@ public struct ModelSubscriptionStringInput: GraphQLMapConvertible {
 
 public final class CreateNoteDataMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateNoteData($input: CreateNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  createNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation CreateNoteData($input: CreateNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  createNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: CreateNoteDataInput
   public var condition: ModelNoteDataConditionInput?
@@ -973,7 +973,6 @@ public final class CreateNoteDataMutation: GraphQLMutation {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -982,8 +981,8 @@ public final class CreateNoteDataMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1048,22 +1047,13 @@ public final class CreateNoteDataMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class UpdateNoteDataMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateNoteData($input: UpdateNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  updateNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation UpdateNoteData($input: UpdateNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  updateNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: UpdateNoteDataInput
   public var condition: ModelNoteDataConditionInput?
@@ -1114,7 +1104,6 @@ public final class UpdateNoteDataMutation: GraphQLMutation {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1123,8 +1112,8 @@ public final class UpdateNoteDataMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1189,22 +1178,13 @@ public final class UpdateNoteDataMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class DeleteNoteDataMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteNoteData($input: DeleteNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  deleteNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "mutation DeleteNoteData($input: DeleteNoteDataInput!, $condition: ModelNoteDataConditionInput) {\n  deleteNoteData(input: $input, condition: $condition) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var input: DeleteNoteDataInput
   public var condition: ModelNoteDataConditionInput?
@@ -1255,7 +1235,6 @@ public final class DeleteNoteDataMutation: GraphQLMutation {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1264,8 +1243,8 @@ public final class DeleteNoteDataMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1330,22 +1309,13 @@ public final class DeleteNoteDataMutation: GraphQLMutation {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class GetNoteDataQuery: GraphQLQuery {
   public static let operationString =
-    "query GetNoteData($id: ID!) {\n  getNoteData(id: $id) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "query GetNoteData($id: ID!) {\n  getNoteData(id: $id) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -1394,7 +1364,6 @@ public final class GetNoteDataQuery: GraphQLQuery {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1403,8 +1372,8 @@ public final class GetNoteDataQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1469,22 +1438,13 @@ public final class GetNoteDataQuery: GraphQLQuery {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class ListNoteDataQuery: GraphQLQuery {
   public static let operationString =
-    "query ListNoteData($filter: ModelNoteDataFilterInput, $limit: Int, $nextToken: String) {\n  listNoteData(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      description\n      image\n      createdAt\n      updatedAt\n      owner\n    }\n    nextToken\n  }\n}"
+    "query ListNoteData($filter: ModelNoteDataFilterInput, $limit: Int, $nextToken: String) {\n  listNoteData(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      name\n      description\n      image\n      createdAt\n      updatedAt\n    }\n    nextToken\n  }\n}"
 
   public var filter: ModelNoteDataFilterInput?
   public var limit: Int?
@@ -1583,7 +1543,6 @@ public final class ListNoteDataQuery: GraphQLQuery {
           GraphQLField("image", type: .scalar(String.self)),
           GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-          GraphQLField("owner", type: .scalar(String.self)),
         ]
 
         public var snapshot: Snapshot
@@ -1592,8 +1551,8 @@ public final class ListNoteDataQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-          self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+        public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+          self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
         }
 
         public var __typename: String {
@@ -1658,15 +1617,6 @@ public final class ListNoteDataQuery: GraphQLQuery {
             snapshot.updateValue(newValue, forKey: "updatedAt")
           }
         }
-
-        public var owner: String? {
-          get {
-            return snapshot["owner"] as? String
-          }
-          set {
-            snapshot.updateValue(newValue, forKey: "owner")
-          }
-        }
       }
     }
   }
@@ -1674,25 +1624,23 @@ public final class ListNoteDataQuery: GraphQLQuery {
 
 public final class OnCreateNoteDataSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateNoteData($filter: ModelSubscriptionNoteDataFilterInput, $owner: String) {\n  onCreateNoteData(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnCreateNoteData($filter: ModelSubscriptionNoteDataFilterInput) {\n  onCreateNoteData(filter: $filter) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionNoteDataFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onCreateNoteData", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnCreateNoteDatum.selections)),
+      GraphQLField("onCreateNoteData", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnCreateNoteDatum.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -1725,7 +1673,6 @@ public final class OnCreateNoteDataSubscription: GraphQLSubscription {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1734,8 +1681,8 @@ public final class OnCreateNoteDataSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1800,40 +1747,29 @@ public final class OnCreateNoteDataSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class OnUpdateNoteDataSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateNoteData($filter: ModelSubscriptionNoteDataFilterInput, $owner: String) {\n  onUpdateNoteData(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnUpdateNoteData($filter: ModelSubscriptionNoteDataFilterInput) {\n  onUpdateNoteData(filter: $filter) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionNoteDataFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onUpdateNoteData", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnUpdateNoteDatum.selections)),
+      GraphQLField("onUpdateNoteData", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnUpdateNoteDatum.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -1866,7 +1802,6 @@ public final class OnUpdateNoteDataSubscription: GraphQLSubscription {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1875,8 +1810,8 @@ public final class OnUpdateNoteDataSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1941,40 +1876,29 @@ public final class OnUpdateNoteDataSubscription: GraphQLSubscription {
           snapshot.updateValue(newValue, forKey: "updatedAt")
         }
       }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
-        }
-      }
     }
   }
 }
 
 public final class OnDeleteNoteDataSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteNoteData($filter: ModelSubscriptionNoteDataFilterInput, $owner: String) {\n  onDeleteNoteData(filter: $filter, owner: $owner) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n    owner\n  }\n}"
+    "subscription OnDeleteNoteData($filter: ModelSubscriptionNoteDataFilterInput) {\n  onDeleteNoteData(filter: $filter) {\n    __typename\n    id\n    name\n    description\n    image\n    createdAt\n    updatedAt\n  }\n}"
 
   public var filter: ModelSubscriptionNoteDataFilterInput?
-  public var owner: String?
 
-  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil, owner: String? = nil) {
+  public init(filter: ModelSubscriptionNoteDataFilterInput? = nil) {
     self.filter = filter
-    self.owner = owner
   }
 
   public var variables: GraphQLMap? {
-    return ["filter": filter, "owner": owner]
+    return ["filter": filter]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["Subscription"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("onDeleteNoteData", arguments: ["filter": GraphQLVariable("filter"), "owner": GraphQLVariable("owner")], type: .object(OnDeleteNoteDatum.selections)),
+      GraphQLField("onDeleteNoteData", arguments: ["filter": GraphQLVariable("filter")], type: .object(OnDeleteNoteDatum.selections)),
     ]
 
     public var snapshot: Snapshot
@@ -2007,7 +1931,6 @@ public final class OnDeleteNoteDataSubscription: GraphQLSubscription {
         GraphQLField("image", type: .scalar(String.self)),
         GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
         GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
-        GraphQLField("owner", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -2016,8 +1939,8 @@ public final class OnDeleteNoteDataSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String, owner: String? = nil) {
-        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt, "owner": owner])
+      public init(id: GraphQLID, name: String, description: String? = nil, image: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(snapshot: ["__typename": "NoteData", "id": id, "name": name, "description": description, "image": image, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -2080,15 +2003,6 @@ public final class OnDeleteNoteDataSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "updatedAt")
-        }
-      }
-
-      public var owner: String? {
-        get {
-          return snapshot["owner"] as? String
-        }
-        set {
-          snapshot.updateValue(newValue, forKey: "owner")
         }
       }
     }

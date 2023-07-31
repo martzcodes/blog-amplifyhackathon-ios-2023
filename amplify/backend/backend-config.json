@@ -1,23 +1,12 @@
 {
   "api": {
     "amplifypushup": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "amplifypushup774e9e1f774e9e1f"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authamplifypushup774e9e1f774e9e1f"
-            }
+            "authenticationType": "AWS_IAM"
           }
         }
       },

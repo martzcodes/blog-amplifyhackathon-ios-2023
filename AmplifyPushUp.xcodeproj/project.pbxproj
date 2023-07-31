@@ -23,10 +23,9 @@
 		CC59A8D82A76C57900351718 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = CC59A8D62A76C57800351718 /* awsconfiguration.json */; };
 		CC59A8D92A76C57900351718 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = CC59A8D72A76C57900351718 /* amplifyconfiguration.json */; };
 		CC59A8DB2A76C59E00351718 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8DA2A76C59E00351718 /* Backend.swift */; };
-		CC59A8DE2A770AAC00351718 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8DD2A770AAC00351718 /* ViewModel.swift */; };
-		CC59A8E42A7717FF00351718 /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E12A7717FF00351718 /* NoteData.swift */; };
-		CC59A8E52A7717FF00351718 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E22A7717FF00351718 /* AmplifyModels.swift */; };
-		CC59A8E62A7717FF00351718 /* NoteData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E32A7717FF00351718 /* NoteData+Schema.swift */; };
+		CC59A8E42A7717FF00351718 /* amplify/generated/models/NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E12A7717FF00351718 /* amplify/generated/models/NoteData.swift */; };
+		CC59A8E52A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E22A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift */; };
+		CC59A8E62A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC59A8E32A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift */; };
 		CC59A8E92A7746E900351718 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = CC59A8E82A7746E900351718 /* AWSAPIPlugin */; };
 		D21DADD50BAF1706CCA83165 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 50D1583C2B31A51F41ACAACB /* awsconfiguration.json */; };
 		FC4A0534D7C265944A6D3AB0 /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B976D2C6438732755D64183F /* NoteData.swift */; };
@@ -47,10 +46,9 @@
 		CC59A8D72A76C57900351718 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		CC59A8DA2A76C59E00351718 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		CC59A8DC2A76C84B00351718 /* AmplifyPushUp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AmplifyPushUp.entitlements; sourceTree = "<group>"; };
-		CC59A8DD2A770AAC00351718 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		CC59A8E12A7717FF00351718 /* NoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteData.swift; sourceTree = "<group>"; };
-		CC59A8E22A7717FF00351718 /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyModels.swift; sourceTree = "<group>"; };
-		CC59A8E32A7717FF00351718 /* NoteData+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NoteData+Schema.swift"; sourceTree = "<group>"; };
+		CC59A8E12A7717FF00351718 /* amplify/generated/models/NoteData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = amplify/generated/models/NoteData.swift; sourceTree = "<group>"; };
+		CC59A8E22A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		CC59A8E32A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "amplify/generated/models/NoteData+Schema.swift"; sourceTree = "<group>"; };
 		CC59A8EA2A77519C00351718 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E0D8D5BBBB357A320C584B18 /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		FE3BD6F972D8F5768C2ABB82 /* NoteData+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "NoteData+Schema.swift"; path = "amplify/generated/models/NoteData+Schema.swift"; sourceTree = "<group>"; };
@@ -87,6 +85,9 @@
 				70D7796C2D9AADD6ACC24419 /* AmplifyModels.swift */,
 				FE3BD6F972D8F5768C2ABB82 /* NoteData+Schema.swift */,
 				B976D2C6438732755D64183F /* NoteData.swift */,
+				CC59A8E32A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift */,
+				CC59A8E12A7717FF00351718 /* amplify/generated/models/NoteData.swift */,
+				CC59A8E22A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift */,
 			);
 			name = AmplifyModels;
 			sourceTree = "<group>";
@@ -119,7 +120,6 @@
 				CC59A8DF2A7717FF00351718 /* generated */,
 				CC59A8DC2A76C84B00351718 /* AmplifyPushUp.entitlements */,
 				CC59A8BB2A76B05F00351718 /* AmplifyPushUpApp.swift */,
-				CC59A8DD2A770AAC00351718 /* ViewModel.swift */,
 				CC59A8BD2A76B05F00351718 /* ContentView.swift */,
 				CC59A8CB2A76B57500351718 /* UserData.swift */,
 				CC59A8C92A76B0DD00351718 /* Note.swift */,
@@ -150,9 +150,9 @@
 		CC59A8E02A7717FF00351718 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				CC59A8E12A7717FF00351718 /* NoteData.swift */,
-				CC59A8E22A7717FF00351718 /* AmplifyModels.swift */,
-				CC59A8E32A7717FF00351718 /* NoteData+Schema.swift */,
+				CC59A8E12A7717FF00351718 /* amplify/generated/models/NoteData.swift */,
+				CC59A8E22A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift */,
+				CC59A8E32A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -248,16 +248,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC59A8E62A7717FF00351718 /* NoteData+Schema.swift in Sources */,
+				CC59A8E62A7717FF00351718 /* amplify/generated/models/NoteData+Schema.swift in Sources */,
 				CC59A8BE2A76B05F00351718 /* ContentView.swift in Sources */,
 				CC59A8BC2A76B05F00351718 /* AmplifyPushUpApp.swift in Sources */,
 				CC59A8CC2A76B57500351718 /* UserData.swift in Sources */,
 				CC59A8CA2A76B0DD00351718 /* Note.swift in Sources */,
-				CC59A8DE2A770AAC00351718 /* ViewModel.swift in Sources */,
 				CC59A8DB2A76C59E00351718 /* Backend.swift in Sources */,
 				3E1F24DDCBBB8E67005875A2 /* AmplifyModels.swift in Sources */,
-				CC59A8E52A7717FF00351718 /* AmplifyModels.swift in Sources */,
-				CC59A8E42A7717FF00351718 /* NoteData.swift in Sources */,
+				CC59A8E52A7717FF00351718 /* amplify/generated/models/AmplifyModels.swift in Sources */,
+				CC59A8E42A7717FF00351718 /* amplify/generated/models/NoteData.swift in Sources */,
 				BAFB443C4AD3F34A52186F39 /* NoteData+Schema.swift in Sources */,
 				FC4A0534D7C265944A6D3AB0 /* NoteData.swift in Sources */,
 			);

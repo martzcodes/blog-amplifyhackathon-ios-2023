@@ -4,7 +4,12 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type NoteData
 @model
-@auth (rules: [ { allow: owner } ]) {
+@auth(
+    rules: [
+      { allow: public, provider: iam, operations: [read] }
+      { allow: private, provider: iam, operations: [read, create, update, delete] }
+    ]
+  ) {
     id: ID!
     name: String!
     description: String

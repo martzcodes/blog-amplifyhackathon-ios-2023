@@ -5,19 +5,19 @@ import SwiftUI
 
 struct ListRow: View {
     @ObservedObject var note : Note
-var body: some View {
+    var body: some View {
 
         return HStack(alignment: .center, spacing: 5.0) {
 
             // if there is an image, display it on the left
-if (note.image != nil) {
+            if (note.image != nil) {
                 note.image!
                 .resizable()
                 .frame(width: 50, height: 50)
             }
 
             // the right part is a vertical stack with the title and description
-VStack(alignment: .leading, spacing: 5.0) {
+            VStack(alignment: .leading, spacing: 5.0) {
                 Text(note.name)
                 .bold()
 
@@ -32,7 +32,6 @@ VStack(alignment: .leading, spacing: 5.0) {
 // this is the main view of our app,
 // it is made of a Table with one line per Note
 struct ContentView: View {
-    @EnvironmentObject public var model: ViewModel
     @ObservedObject private var userData: UserData = .shared
     
     @State var showCreateNote = false
@@ -40,26 +39,6 @@ struct ContentView: View {
     @State var name : String        = "New Note"
     @State var description : String = "This is a new note"
     @State var image : String       = "image"
-    
-    func federateToIdentityPools(with token: Data) {
-        guard
-            let tokenString = String(data: token, encoding: .utf8),
-            let plugin = try? Amplify.Auth.getPlugin(for: "awsCognitoAuthPlugin") as? AWSCognitoAuthPlugin
-        else { return }
-        
-        Task {
-            do {
-                self.userData.userToken = tokenString;
-                let result = try await plugin.federateToIdentityPool(
-                    withProviderToken: tokenString,
-                    for: .apple
-                )
-                print("Successfully federated user to identity pool with result:", result)
-            } catch {
-                print("Failed to federate to identity pool with error:", error)
-            }
-        }
-    }
 
     func configureRequest(_ request: ASAuthorizationAppleIDRequest) {
         request.requestedScopes = [.email]
@@ -69,11 +48,14 @@ struct ContentView: View {
         switch result {
         case .success(let authorization):
             guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
-                  let identityToken = credential.identityToken else {
+                    let identityToken = credential.identityToken else {
+                        return
+                    }
+            guard let tokenString = String(data: identityToken, encoding: .utf8) else {
                 return
             }
-            self.federateToIdentityPools(with: identityToken)
-            self.model.signIn()
+            Backend.shared.federateToIdentityPools(with: tokenString)
+            self.userData.isSignedIn = true;
         case .failure(let error):
             print(error)
         }
@@ -97,7 +79,7 @@ struct ContentView: View {
                         }
                     }
                     .navigationBarTitle(Text("Notes"))
-                    .navigationBarItems(leading: SignOutButton(model : self.model),
+                    .navigationBarItems(leading: SignOutButton(),
                                         trailing: Button(action: {
                         self.showCreateNote.toggle()
                     }) {
@@ -113,22 +95,28 @@ struct ContentView: View {
                         onCompletion: handleResult
                     )
                     .frame(maxWidth: 300, maxHeight: 45)
+                    List {
+                        ForEach(userData.notes) { note in
+                            ListRow(note: note)
+                        }
+                    }
                 }
             }
         }.task {
             // get the initial authentication status. This call will change app state according to result
-            try? await self.model.getInitialAuthStatus()
+            try? await Backend.shared.getInitialAuthStatus()
+            
+            try? await Backend.shared.queryNotes()
             
             // start a long polling to listen to auth updates
-            await self.model.listenAuthUpdate()
+            await Backend.shared.listenAuthUpdate()
         }
     }
 }
 
 struct SignOutButton : View {
-    var model : ViewModel
     var body: some View {
-        Button(action: { self.model.signOut() }) {
+        Button(action: { Task { await Backend.shared.signOut() } }) {
                 Text("Sign Out")
         }
     }

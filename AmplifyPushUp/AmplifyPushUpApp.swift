@@ -14,7 +14,7 @@ struct AmplifyPushUpApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(ViewModel())
+            ContentView()
         }
     }
 }

@@ -11,7 +11,6 @@ mutation CreateNoteData(
     image
     createdAt
     updatedAt
-    owner
     __typename
   }
 }
@@ -27,7 +26,6 @@ mutation UpdateNoteData(
     image
     createdAt
     updatedAt
-    owner
     __typename
   }
 }
@@ -43,7 +41,6 @@ mutation DeleteNoteData(
     image
     createdAt
     updatedAt
-    owner
     __typename
   }
 }

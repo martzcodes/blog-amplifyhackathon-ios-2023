@@ -7,7 +7,6 @@ class UserData : ObservableObject {
 
     @Published var notes : [Note] = []
     @Published var isSignedIn : Bool = false
-    @Published var userToken: String = ""
 }
 // this is a test data set to preview the UI in Xcode
 @discardableResult
