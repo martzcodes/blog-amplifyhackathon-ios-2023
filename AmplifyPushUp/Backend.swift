@@ -263,6 +263,19 @@ class Backend {
             }
             do {
                 let data = try await uploadTask.value
+                let properties: AnalyticsProperties = [
+                    "eventPropertyStringKey": "eventPropertyStringValue",
+                    "eventPropertyIntKey": 123,
+                    "eventPropertyDoubleKey": 12.34,
+                    "eventPropertyBoolKey": true
+                ]
+
+                let event = BasicAnalyticsEvent(
+                    name: "imageUploaded",
+                    properties: properties
+                )
+
+                try Amplify.Analytics.record(event: event)
                 print("Image upload completed: \(data)")
             } catch {
                 print("Image upload failed: \(error).")

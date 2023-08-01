@@ -5,6 +5,8 @@
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "AWS_IAM"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }
